@@ -1,3 +1,57 @@
 .textfield-cont{
+    padding: 12px;
     display: flex;
+}
+
+input {
+    height: 32px;
+    background: none;
+    color: rgba(0,0,0,.87);
+    font-size: 18px;
+    padding: 10px 10px 10px 15px;
+    display: block;
+    flex: 1;
+    border: none;
+    border-radius: 10px;
+    border: 1px solid #c6c6c6;
+}
+
+input:focus {
+    outline: none;
+    border: 2px solid blue;
+}
+
+input:focus ~ label {
+    top: -5px;
+    font-size: 14px;
+    color: rgba(0,0,0,.45);
+    left: 12px;
+}
+
+input:focus ~ .bar:before {
+    width: 320px;
+}
+
+input[type="password"] {
+    letter-spacing: 0.3em;
+}
+
+.textfield-wra{
+    position: relative;
+    flex: 1;
+    display: flex;
+}
+
+label {
+    color: #c6c6c6;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 15px;
+    top: 16px;
+    transition: 300ms ease all;
+    background-color: #fff;
+    padding: 0 2px;
+    text-transform: capitalize;
 }
