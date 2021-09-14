@@ -21,7 +21,7 @@ input:focus {
     border: 1px solid blue;
 }
 
-input:focus ~ label {
+input:focus ~ label, input:not([value='']) ~ label{
     top: -5px;
     font-size: 14px;
     color: rgba(0,0,0,.45);

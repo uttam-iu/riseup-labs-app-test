@@ -11,7 +11,7 @@
     font-size: 18px;
     height: 40px;
     min-width: 120px;
-    background: red;
+    background: #696de0;
     color: white;
     margin: 16px;
 }
@@ -28,6 +28,6 @@
     padding: 0;
 }
 
-.btn:active{
+.text-btn:active{
     color: blue;
 }

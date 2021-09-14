@@ -1,31 +1,44 @@
 import React from 'react';
 import TextField from './libs/TextField';
 import Button from './libs/Button';
+import { _userLogin } from './helpers/ApiHelper';
+
 
 const Login = props => {
+	const { onCompChange } = props;
+	const [formData, setFormData] = React.useState({ email: "eve.holt@reqres.in", password: 'cityslicka' });
+
 	const onChange = (name, value) => {
-		console.log(name, value)
+		let fd = { ...formData };
+		fd[name] = value;
+		setFormData(fd);
 	}
 
-	const onSignup = () => {
-		console.log('signup btn')
-	}
+	const onSignup = () => onCompChange('signupComp');
 
 	const onsubmit = (e) => {
-		console.log('submit btn')
+		e.preventDefault();
+		_userLogin(formData)
+			.then(resp => {
+				console.log(resp.token)
+				if (resp.token) onCompChange('dashboardComp', { email: formData.email })
+			})
+			.catch(err => {
+				console.log(err)
+			});
 	}
 
 	return (
 		<div className='login-cont'>
 			<div className='login-wra'>
-				<h1 >Login Page</h1>
+				<h1 >Login</h1>
 				<form onSubmit={onsubmit}>
 					<TextField
 						name='email'
-						label="username"
+						label="email"
 						type='text'
 						onDataChange={onChange}
-						value=''
+						value={formData.email}
 						isRequired={true}
 					// error='error' 
 					/>
@@ -35,7 +48,7 @@ const Login = props => {
 						label="password"
 						type='password'
 						onDataChange={onChange}
-						value=''
+						value={formData.password}
 						isRequired={true}
 					// error='error' 
 					/>
