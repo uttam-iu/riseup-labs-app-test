@@ -1,22 +1,10 @@
 import './resources/styles/style.css';
-import TextField from './components/libs/TextField';
+import LogIn from './components/Login';
 
 function App() {
-	const onChange = (name, value) => {
-		console.log(name, value)
-	}
-
 	return (
 		<div className="App">
-			<TextField
-				name='age'
-				label="something"
-				type='text'
-				onDataChange={onChange}
-				value='val'
-				isRequired={true}
-			// error='error' 
-			/>
+			<LogIn />
 		</div>
 	);
 }

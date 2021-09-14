@@ -1,3 +1,28 @@
 .login-cont{
     display: flex;
+    justify-content: center;
+    padding: 40px 0px;
+}
+
+.login-wra{
+    max-width: 400px;
+    background: rgb(240, 240, 240);
+    flex: 1 1 0%;
+    border-radius: 16px;
+    padding: 24px 12px;
+}
+
+.login-wra h1, .link-btn-wra div{
+    text-align: center;
+}
+
+.login-btn-wra{
+    display: flex;
+    justify-content: center;
+}
+
+.link-btn-wra p{
+    text-align: center;
+    font-size: 18px;
+    margin: 8px 0px;
 }

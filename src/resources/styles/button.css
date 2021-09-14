@@ -1,0 +1,33 @@
+.btn{
+    outline: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.contained-btn{
+    font-size: 18px;
+    height: 40px;
+    min-width: 120px;
+    background: red;
+    color: white;
+    margin: 16px;
+}
+
+.contained-btn:active{
+    outline: none;
+    border: none;
+}
+
+.text-btn{
+    font-size: 16px;
+    text-decoration: underline;
+    margin: 0;
+    padding: 0;
+}
+
+.btn:active{
+    color: blue;
+}

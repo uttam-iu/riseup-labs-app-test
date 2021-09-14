@@ -18,7 +18,7 @@ input {
 
 input:focus {
     outline: none;
-    border: 2px solid blue;
+    border: 1px solid blue;
 }
 
 input:focus ~ label {
@@ -51,7 +51,7 @@ label {
     left: 15px;
     top: 16px;
     transition: 300ms ease all;
-    background-color: #fff;
+    background-color: #f0f0f0;
     padding: 0 2px;
     text-transform: capitalize;
 }
