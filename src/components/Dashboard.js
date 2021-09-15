@@ -4,28 +4,31 @@ import Button from './libs/Button';
 import { _getUser } from './helpers/ApiHelper';
 
 const Dashboard = props => {
-	const { onCompChange, initData } = props;
-	const onLogout = () => onCompChange('loginComp');
-	const [userInfo, setUserInfo] = React.useState({});
+	const { onCompChange } = props;
+	const loggedInEmail = localStorage.getItem('email');
 	// const [loading, setLoading] = React.useState(true);
 
-	//coll when initdata is changed
+	//on signout button clicked
+	const onLogout = () => {
+		localStorage.removeItem('email');
+		onCompChange('loginComp');
+	}
+
 	React.useEffect(() => {
-		_getUser(initData)
+		_getUser({ email: loggedInEmail })
 			.then(resp => {
-				setUserInfo(resp);
 				//setLoading(false)
 			})
 			.catch(err => {
 				//setLoading(false)
 				console.log(err)
 			});
-	}, [initData]);
+	}, [loggedInEmail]);
 
 	return (
 		<div>
-			{userInfo.email && <div className='dashboard-title'>
-				{"Hi " + userInfo.email + ", welcome to dashboard"}
+			{loggedInEmail && <div className='dashboard-title'>
+				{"Hi " + loggedInEmail + ", welcome to dashboard"}
 				<Button name='signout' onBtnClik={onLogout} />
 			</div>}
 			{/* {loading && <div className="loader"></div>} */}

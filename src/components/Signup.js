@@ -36,7 +36,10 @@ const Signup = props => {
 			_userRegister(fd)
 				.then(resp => {
 					//setLoading(false);
-					if (resp.token) onCompChange('dashboardComp', { email: formData.email })
+					if (resp.token) {
+						localStorage.setItem('email', formData.email);
+						onCompChange('dashboardComp');
+					}
 				})
 				.catch(err => {
 					//setLoading(false);

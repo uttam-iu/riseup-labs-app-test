@@ -28,7 +28,11 @@ const Login = props => {
 			.then(resp => {
 				setGError('');
 				// setLoading(false);
-				if (resp.token) onCompChange('dashboardComp', { email: formData.email });
+
+				if (resp.token) {
+					localStorage.setItem('email', formData.email);
+					onCompChange('dashboardComp', { email: formData.email });
+				}
 			})
 			.catch(err => {
 				// setLoading(false);
