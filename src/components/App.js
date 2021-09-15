@@ -1,8 +1,8 @@
 import React from 'react';
-import './resources/styles/style.css';
-import LogIn from './components/Login';
-import Signup from './components/Signup';
-import Dashboard from './components/Dashboard';
+import '../resources/styles/style.css';
+import LogIn from './Login';
+import Signup from './Signup';
+import Dashboard from './Dashboard';
 
 function App() {
 	const loggedInEmail = localStorage.getItem('email');
