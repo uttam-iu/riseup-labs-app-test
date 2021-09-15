@@ -1,7 +1,15 @@
+
+.parent{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
 .login-cont{
     display: flex;
     justify-content: center;
-    padding: 40px 0px;
+    padding: 8px;
 }
 
 .login-wra{
@@ -9,11 +17,17 @@
     background: rgb(240, 240, 240);
     flex: 1 1 0%;
     border-radius: 16px;
-    padding: 24px 12px;
+    padding: 12px;
     box-shadow: 0px 2px #bbbbbb;
 }
 
-.login-wra h1, .link-btn-wra div{
+.login-wra h1{
+    color: #696de0;
+    text-align: center;
+    margin: 0px 8px;
+}
+
+.link-btn-wra div{
     text-align: center;
 }
 
@@ -22,10 +36,20 @@
     justify-content: center;
 }
 
+.heading{
+    font-size: 24px;
+    text-align: center;
+    padding-bottom: 8px;
+}
+
+.link-btn-wra{
+    padding-bottom: 24px;
+}
+
 .link-btn-wra p{
     text-align: center;
-    font-size: 18px;
-    margin: 8px 0px;
+    font-size: 16px;
+    margin: 0px;
 }
 
 .warning{

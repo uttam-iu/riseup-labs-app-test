@@ -3,12 +3,14 @@ import React from 'react';
 import TextField from './libs/TextField';
 import Button from './libs/Button';
 import { _userLogin } from './helpers/ApiHelper';
+import Loader from './libs/Loader';
 
 const Login = props => {
 	const { onCompChange } = props;
-	const [formData, setFormData] = React.useState({ email: "eve.holt@reqres.in", password: 'cityslicka' });
+	//test email { email: "eve.holt@reqres.in", password: 'cityslicka' }
+	const [formData, setFormData] = React.useState({});
 	const [gError, setGError] = React.useState('');
-	// const [loading, setLoading] = React.useState(false);
+	const [loading, setLoading] = React.useState(false);
 
 	//on text field valu change
 	const onChange = (name, value) => {
@@ -23,11 +25,11 @@ const Login = props => {
 	//on submit button clicked
 	const onsubmit = (e) => {
 		e.preventDefault();
-		// setLoading(true);
+		setLoading(true);
 		_userLogin(formData)
 			.then(resp => {
 				setGError('');
-				// setLoading(false);
+				setLoading(false);
 
 				if (resp.token) {
 					localStorage.setItem('email', formData.email);
@@ -35,15 +37,17 @@ const Login = props => {
 				}
 			})
 			.catch(err => {
-				// setLoading(false);
+				setLoading(false);
 				setGError(err.responseJSON.error);
 			});
 	};
 
 	return (
+	<div className='parent'>
 		<div className='login-cont'>
 			<div className='login-wra'>
-				<h1 >Login</h1>
+				<h1 >RISEUP LABS</h1>
+				<div className='heading'>Login</div>
 				<form onSubmit={onsubmit}>
 					<TextField
 						name='email'
@@ -68,9 +72,7 @@ const Login = props => {
 				</form>
 
 				<div className='warning'>{gError}</div>
-				{/* {loading && <div style={{ display: 'flex', justifyContent: 'center' }}>
-					<div className="loader" />
-				</div>} */}
+				{loading && <Loader />}
 				<div className='link-btn-wra'>
 					<p >Haven't any account? </p>
 					<div>
@@ -79,6 +81,7 @@ const Login = props => {
 				</div>
 			</div>
 		</div>
+	</div>
 	);
 };
 

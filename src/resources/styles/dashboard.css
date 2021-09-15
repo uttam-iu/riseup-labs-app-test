@@ -1,6 +1,17 @@
+.dashboard-cont h1{
+    color: #696de0;
+    text-align: center;
+    margin: 40px 8px;
+}
+
+.dashboard-cont .text-btn{
+    font-size: 24px;
+    margin-top: 24px;
+}
+
 .dashboard-title{
     text-align: center;
     font-size: 28px;
-    padding: 40px 24px;
+    padding: 0px 24px;
     color: dodgerblue;
 }
