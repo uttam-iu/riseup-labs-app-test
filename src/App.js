@@ -8,6 +8,7 @@ function App() {
 	const [dispComp, setDisComp] = React.useState('loginComp');
 	const [initData, setInitData] = React.useState({});
 
+	//for component changing
 	const onCompChange = (comp = 'loginComp', dataObj = {}) => {
 		setInitData(dataObj);
 		setDisComp(comp);

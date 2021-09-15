@@ -1,39 +1,51 @@
+//imports
 import React from 'react';
 import TextField from './libs/TextField';
 import Button from './libs/Button';
 import { _userRegister } from './helpers/ApiHelper';
+import { _dispCustomError } from './helpers/Utilities';
 
 const Signup = props => {
 	const { onCompChange } = props;
 
 	const [formData, setFormData] = React.useState({});
+	const [gError, setGError] = React.useState('');
+	// const [loading, setLoading] = React.useState(false);
 
+	//on textfield value change
 	const onChange = (name, value) => {
 		let fd = { ...formData };
 		fd[name] = value;
 		setFormData(fd);
-	}
+	};
 
+	//on login button clicked
 	const onLogin = () => onCompChange('loginComp');
 
+	//on submit button clicked
 	const onsubmit = (e) => {
 		e.preventDefault();
-		console.log(formData)
-		if (formData.password !== formData.re_type_password) {
-			console.log('password and re pass mismatch')
+		const elem = document.getElementById('confirm_password');
+		if (formData.password !== formData.confirm_password) {
+			_dispCustomError(elem, 'password and confirm password mismatch');
 		} else {
+			//setLoading(true);
+			_dispCustomError(elem, '');
 			let fd = { ...formData };
-			delete fd.re_type_password;
+			delete fd.confirm_password;
 			_userRegister(fd)
 				.then(resp => {
+					//setLoading(false);
 					if (resp.token) onCompChange('dashboardComp', { email: formData.email })
 				})
 				.catch(err => {
-					// console.log('abc', err)
+					//setLoading(false);
+					setGError(err.responseJSON.error);
 				});
 		}
-	}
+	};
 
+	//single text field
 	const getTextField = (name, label, type, cb, value = '', required = false) => {
 		return (
 			<TextField
@@ -43,10 +55,9 @@ const Signup = props => {
 				onDataChange={cb}
 				value={value}
 				isRequired={required}
-			// error='error' 
 			/>
 		);
-	}
+	};
 
 	return (
 		<div className='login-cont'>
@@ -57,13 +68,14 @@ const Signup = props => {
 					{getTextField('first_name', 'first_name', 'text', onChange, '', true)}
 					{getTextField('last_name', 'last_name', 'text', onChange, '', true)}
 					{getTextField('password', 'password', 'password', onChange, '', true)}
-					{getTextField('re_type_password', 're_type_password', 'password', onChange, '', true)}
+					{getTextField('confirm_password', 'confirm_password', 'password', onChange, '', true)}
 
 					<div className='login-btn-wra'>
 						<Button name='signup' isSubmit={true} />
 					</div>
 				</form>
-
+				<div className='warning'>{gError}</div>
+				{/* {loading && <div className="loader"></div>} */}
 				<div className='link-btn-wra'>
 					<p >Already, have any account? </p>
 					<div>

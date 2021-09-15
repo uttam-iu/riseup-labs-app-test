@@ -1,11 +1,12 @@
+//import jQuery
 var $ = require("jquery");
 //BASE_URL
 const BASE_URL = 'https://reqres.in/api/';
 
-
 //object scaffolding
 let apiRequest = {};
 
+//get user
 apiRequest._getUser = (data = {}) => {
 	const loginApi = BASE_URL + 'users/';
 
@@ -20,8 +21,9 @@ apiRequest._getUser = (data = {}) => {
 			return err;
 		}
 	});
-}
+};
 
+//check login
 apiRequest._userLogin = (data = {}) => {
 	const loginApi = BASE_URL + 'login/';
 
@@ -36,8 +38,9 @@ apiRequest._userLogin = (data = {}) => {
 			return err;
 		}
 	});
-}
+};
 
+//register a new user
 apiRequest._userRegister = (data) => {
 	const registerApi = BASE_URL + 'register';
 
@@ -52,7 +55,7 @@ apiRequest._userRegister = (data) => {
 			return err;
 		}
 	});
-}
+};
 
 //finally export the object
 module.exports = apiRequest;

@@ -1,10 +1,11 @@
+//imports
 import React from 'react';
 import PropTypes from 'prop-types';
 
 const Button = props => {
-
 	const { name, onBtnClik, isSubmit } = props;
 
+	//on submit button jsx
 	const submitBtn = () => {
 		return (
 			<div>
@@ -13,6 +14,7 @@ const Button = props => {
 		);
 	};
 
+	//on text button jsx
 	const textBtn = () => {
 		return (
 			<div>
