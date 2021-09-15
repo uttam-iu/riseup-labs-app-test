@@ -27,7 +27,7 @@ const TextField = props => {
 	return (
 		<div className="textfield-cont">
 			<div className="textfield-wra">
-				<input type={type} id={name} value={txtVal} onChange={onValueChange} required={valRequired} />
+				<input type={type} id={name} value={txtVal} onChange={onValueChange} required={valRequired} minLength={type === 'password' ? 6 : null} />
 				<label>{txtLabel}</label>
 			</div>
 		</div>
