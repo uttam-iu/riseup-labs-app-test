@@ -15,6 +15,11 @@ const Signup = props => {
 
 	//on textfield value change
 	const onChange = (name, value) => {
+		if(name === 'confirm_password'){
+			const elem = document.getElementById('confirm_password');
+			_dispCustomError(elem, '');
+		}
+
 		let fd = { ...formData };
 		fd[name] = value;
 		setFormData(fd);
